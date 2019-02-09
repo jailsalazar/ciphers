@@ -1,7 +1,8 @@
-public class InputFile {
-    
-}
+package system;
 
+public class InputFile {
+
+}
 
 //reading files
 //read in to string line by line
@@ -13,5 +14,4 @@ public class InputFile {
 //freq[letterValue - 96] = freq.length((freq[letterValue - 96] + 1)/freq.length)
 //match the frequency with the known frequencies. 
 //use max() to find the max vaule of freq analysis and add that letter to string to create a key.
-//once have key use subsitution
-
+//once have key use subsitutions
