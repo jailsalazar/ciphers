@@ -1,19 +1,24 @@
 package decryption;
 
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import decryption.Key;
 
 public class FrequencyAnalysis {
-	public HashMap<Character, Double> freqMap;
-	public HashMap<String, Double> normalFreq = new HashMap<String, Double>();
+	public LinkedHashMap<String, Double> freqMap;
+	public LinkedHashMap<String, Double> normalFreq = new LinkedHashMap<String, Double>();
+	public Key encryptionKey;
 	
 	public FrequencyAnalysis() {
-		freqMap = new HashMap<Character, Double>();
+		freqMap = new LinkedHashMap<String, Double>();
 		normalFreq = getNormalFrequencies();
+		encryptionKey = new Key();
 	}
 	
-	public HashMap<String, Double> getNormalFrequencies() {
-		HashMap<String, Double> FREQ = new HashMap<String, Double>();
+	public LinkedHashMap<String, Double> getNormalFrequencies() {
+		LinkedHashMap<String, Double> FREQ = new LinkedHashMap<String, Double>();
 		FREQ.put("e", 0.12702);
 		FREQ.put("t", 0.09056);
 		FREQ.put("a", 0.08167);
@@ -48,17 +53,36 @@ public class FrequencyAnalysis {
 		
 		for(int i = 0; i < data.length(); i++) {
 			char tempChar = data.charAt(i);
-			Double value = freqMap.get(tempChar);
+			Double value = freqMap.get(Character.toString(tempChar));
 			
 			if(value != null) {
-				freqMap.put(tempChar, new Double(value + 1));
+				freqMap.put(Character.toString(tempChar), new Double(value + 1));
 			}
 			else {
-				freqMap.put(tempChar, 1.0);
+				freqMap.put(Character.toString(tempChar), 1.0);
 			}
 		}
+		
+		freqMap = sortMap(freqMap);
 				
 		System.out.println(Arrays.asList(freqMap)); 
 		System.out.println(Arrays.asList(normalFreq));
+	}
+	
+	public LinkedHashMap<String, Double> sortMap(LinkedHashMap<String, Double> unsortedMap) {
+        
+		//System.out.println("Unsorted Map : " + unsortedMap);
+		 
+		//LinkedHashMap preserve the ordering of elements in which they are inserted
+		LinkedHashMap<String, Double> reverseSortedMap = new LinkedHashMap<>();
+		 
+		//Use Comparator.reverseOrder() for reverse ordering
+		unsortedMap.entrySet()
+		    .stream()
+		    .sorted(Map.Entry.<String, Double>comparingByValue().reversed())
+		    .forEachOrdered(freq -> reverseSortedMap.put(freq.getKey(), freq.getValue()));
+		 
+		//System.out.println("Reverse Sorted Map   : " + reverseSortedMap);
+		return reverseSortedMap;
 	}
 }
