@@ -10,7 +10,7 @@ public class Key {
 		key = new LinkedHashMap<String, String> ();
 	}
 	
-	public void createKey(LinkedHashMap<String, Double> cipher, LinkedHashMap<String, Double> toPair) {
+	public LinkedHashMap<String, String> createKey(LinkedHashMap<String, Double> cipher, LinkedHashMap<String, Double> toPair) {
 		ArrayList<String> cipherKeyList = new ArrayList<String>(cipher.keySet());
 		ArrayList<String> toPairList = new ArrayList<String>(toPair.keySet());
 		
@@ -20,5 +20,7 @@ public class Key {
 		}
 		
 		System.out.println(Arrays.asList(key)); 
+		
+		return key;
 	}
 }

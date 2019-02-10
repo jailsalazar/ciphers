@@ -11,7 +11,10 @@ public class Substitution {
 		encryptionKey = new Key();
 	}
 	
-	public void basicSubstitution(LinkedHashMap<String, Double> cipher, LinkedHashMap<String, Double> frequencies) {
-		encryptionKey.createKey(cipher, frequencies);
+	public LinkedHashMap<String, String> basicSubstitution(LinkedHashMap<String, Double> cipher, LinkedHashMap<String, Double> frequencies) {
+		LinkedHashMap<String, String> key = encryptionKey.createKey(cipher, frequencies);
+		
+		return key;
+		
 	}
 }
