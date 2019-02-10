@@ -1,6 +1,37 @@
 package system;
 
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.io.FileReader;
+import java.io.IOException;
+
+
 public class InputFile {
+	public ArrayList<String> readData;
+	
+	public InputFile() {
+		readData = new ArrayList<String>();
+	}
+	
+	//Method to read text from file
+	public void readFile(String filePath) {
+		try {
+		//String filePath = "../../ciphertext/cipher1.txt";
+		Scanner scanFile = new Scanner(new FileReader(filePath));
+		
+		//int lineNum = 0;
+		while(scanFile.hasNextLine()) {
+			//readData[lineNum] = scanFile.nextLine();
+			//System.out.println(readData[lineNum]);
+			System.out.println(scanFile.nextLine());
+			//lineNum++;
+		}
+		
+		scanFile.close();
+		} catch (IOException err) {
+	        System.err.println("Error :"+ err);
+	    }
+	}
 
 }
 
