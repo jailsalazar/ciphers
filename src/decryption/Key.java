@@ -6,5 +6,8 @@ public class Key {
 	
 	public Key() {
 		key = new HashMap<String, String> ();
+		
+		
+		
 	}
 }
