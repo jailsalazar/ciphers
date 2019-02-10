@@ -4,17 +4,13 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import decryption.Key;
-
 public class FrequencyAnalysis {
 	public LinkedHashMap<String, Double> freqMap;
 	public LinkedHashMap<String, Double> normalFreq = new LinkedHashMap<String, Double>();
-	public Key encryptionKey;
 	
 	public FrequencyAnalysis() {
 		freqMap = new LinkedHashMap<String, Double>();
 		normalFreq = getNormalFrequencies();
-		encryptionKey = new Key();
 	}
 	
 	public LinkedHashMap<String, Double> getNormalFrequencies() {
@@ -64,6 +60,7 @@ public class FrequencyAnalysis {
 		}
 		
 		freqMap = sortMap(freqMap);
+		
 				
 		System.out.println(Arrays.asList(freqMap)); 
 		System.out.println(Arrays.asList(normalFreq));
