@@ -1,36 +1,56 @@
 package system;
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Scanner;
-import java.util.ArrayList;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Arrays; 
 
 
 public class InputFile {
-	public ArrayList<String> readData;
+	public String readData;
 	
 	public InputFile() {
-		readData = new ArrayList<String>();
+		readData = "";
 	}
 	
 	//Method to read text from file
 	public void readFile(String filePath) {
 		try {
-		//String filePath = "../../ciphertext/cipher1.txt";
 		Scanner scanFile = new Scanner(new FileReader(filePath));
-		
-		//int lineNum = 0;
+		String data = "";
+
 		while(scanFile.hasNextLine()) {
-			//readData[lineNum] = scanFile.nextLine();
-			//System.out.println(readData[lineNum]);
-			System.out.println(scanFile.nextLine());
-			//lineNum++;
+			data = scanFile.nextLine();
+			readData = readData + data;
 		}
+		//System.out.println(readData);
 		
 		scanFile.close();
 		} catch (IOException err) {
 	        System.err.println("Error :"+ err);
 	    }
+		characterFrequency(readData);
+	}
+	
+	public void characterFrequency(String data) {
+		HashMap<Character, Integer> freqMap = new HashMap<Character, Integer>();
+		
+		for(int i = 0; i < data.length(); i++) {
+			char tempChar = data.charAt(i);
+			Integer value = freqMap.get(tempChar);
+			
+			if(value != null) {
+				freqMap.put(tempChar, new Integer(value + 1));
+			}
+			else {
+				freqMap.put(tempChar, 1);
+			}
+		}
+		
+		System.out.println(Arrays.asList(freqMap)); 
 	}
 
 }

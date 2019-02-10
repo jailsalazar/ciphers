@@ -7,5 +7,6 @@ public class Driver {
 		InputFile fileToOpen = new InputFile();
 		
 		fileToOpen.readFile("./ciphertext/cipher1.txt");
+		
 	}
 }
