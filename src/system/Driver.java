@@ -1,5 +1,6 @@
 package system;
 import decryption.Substitution;
+import decryption.Shift;
 
 import java.util.LinkedHashMap;
 
@@ -14,8 +15,12 @@ public class Driver {
 		Substitution subMethod = new Substitution();
 		key = subMethod.basicSubstitution(fileToOpen.cipher.freqMap, fileToOpen.cipher.normalFreq);
 		
+		Shift attemptShift = new Shift();
+		attemptShift.shiftCipher(fileToOpen.cipher.freqMap, fileToOpen.readData);
+		
+		
 		OutputFile plaintext = new OutputFile();
-		plaintext.convertToPlaintext("nothing", fileToOpen.readData, key);
+		//plaintext.convertToPlaintext("nothing", fileToOpen.readData, key);
 		
 	}
 }
