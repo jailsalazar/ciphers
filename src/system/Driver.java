@@ -10,7 +10,7 @@ public class Driver {
 		InputFile fileToOpen = new InputFile();
 		LinkedHashMap<String, String> key;
 		
-		fileToOpen.readFile("./ciphertext/cipher2.txt");
+		fileToOpen.readFile("./ciphertext/cipher1.txt");
 		
 		Substitution subMethod = new Substitution();
 		key = subMethod.basicSubstitution(fileToOpen.cipher.freqMap, fileToOpen.cipher.normalFreq);

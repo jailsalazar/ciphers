@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class VIgenere {
 //public void trigramFrequency(String data) {
-	string mostTri = "";
+	String mostTri = "";
 //		for(int i = 0; i < data.length(); i++) {
 //			String tempString = Character.toString(data.charAt(i)) + Character.toString(data.charAt(i+1)) + Character.toString(data.charAt(i+2));
 //			Double value = trigramFreqMap.get(tempString);
@@ -19,17 +19,17 @@ public class VIgenere {
 //		
 //		trigramFreqMap = sortMap(trigramFreqMap);
 	
-	mostTri = trigramFreqMap.get(0);
-	Array kasasik+
-	
-	for(int j = 0; j < data.lenght(); i++) {
-		String tempString = Character.toString(data.charAt(i)) + Character.toString(data.charAt(i+1)) + Character.toString(data.charAt(i+2));
-		if(mostTri == tempString) {
-			//location of tempstring
-			//into hash maps!???
-		}
-		
-	}
+//	mostTri = trigramFreqMap.get(0);
+//	Array kasasik+
+//	
+//	for(int j = 0; j < data.lenght(); i++) {
+//		String tempString = Character.toString(data.charAt(i)) + Character.toString(data.charAt(i+1)) + Character.toString(data.charAt(i+2));
+//		if(mostTri == tempString) {
+//			//location of tempstring
+//			//into hash maps!???
+//		}
+//		
+//	}
 //		
 //		System.out.println("Trigram: " + Arrays.asList(trigramFreqMap)); 
 //	}
