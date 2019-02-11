@@ -4,9 +4,11 @@ import java.util.LinkedHashMap;
 
 public class IndexCoinc {
 	public double IC;
+	public String possibleCipher;
 	
 	public IndexCoinc() {
 		IC = 0.0;
+		possibleCipher = "";
 	}
 	
 	public void calculateIC(LinkedHashMap<String, Double> frequencies, int length) {
@@ -20,25 +22,19 @@ public class IndexCoinc {
 		for(char i = 'A'; i <= 'Z'; i++) {
 			freq = frequencies.get(Character.toString(i));
 			num += freq * (freq-1);
-			//System.out.println(frequencies.get(Character.toString(i)));
 		}
 		
 		IC = num / den;
 		System.out.println("IC: " + IC);	
+		
+		determinePossibleCipher(IC);
 	}
-//	double num = 0.0;
-//	double den = 0.0;
-//	double IC = 0.0;
-//	
-//	den = cipher.length*(ciper.length-1);
-//	
-//	for (i = 0; i < 25; i++) {
-//		
-//		num += freqNum.value(i)(freqNum.value.(i) - 1);
-//		
-//		
-//	}
-//	
-//	IC = num/den;
-
+	
+	public void calculateShiftIC(LinkedHashMap<String, Double> frequencies, int length) {
+		
+	}
+	
+	public void determinePossibleCipher(double IC) {
+		
+	}
 }

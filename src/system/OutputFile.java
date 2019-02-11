@@ -17,6 +17,5 @@ public class OutputFile {
 		}
 		
 		System.out.println(plainText);
-		
 	}
 }
