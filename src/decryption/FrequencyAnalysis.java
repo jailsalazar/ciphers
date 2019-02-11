@@ -3,14 +3,17 @@ package decryption;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import decryption.IndexCoinc;
 
 public class FrequencyAnalysis {
 	public LinkedHashMap<String, Double> freqMap;
 	public LinkedHashMap<String, Double> normalFreq = new LinkedHashMap<String, Double>();
+	public IndexCoinc IC;
 	
 	public FrequencyAnalysis() {
 		freqMap = new LinkedHashMap<String, Double>();
 		normalFreq = getNormalFrequencies();
+		IC = new IndexCoinc();
 	}
 	
 	public LinkedHashMap<String, Double> getNormalFrequencies() {
@@ -61,9 +64,10 @@ public class FrequencyAnalysis {
 		
 		freqMap = sortMap(freqMap);
 		
-				
 		System.out.println(Arrays.asList(freqMap)); 
 		System.out.println(Arrays.asList(normalFreq));
+		
+		IC.calculateIC(freqMap, data.length());
 	}
 	
 	public LinkedHashMap<String, Double> sortMap(LinkedHashMap<String, Double> unsortedMap) {

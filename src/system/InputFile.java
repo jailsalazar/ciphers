@@ -9,10 +9,16 @@ import decryption.FrequencyAnalysis;
 public class InputFile {
 	public String readData;
 	FrequencyAnalysis cipher;
+	public int cipherLength;
 	
 	public InputFile() {
 		readData = "";
 		cipher = new FrequencyAnalysis();
+		cipherLength = 0;
+	}
+	
+	public void setCipherLength() {
+		cipherLength = readData.length();
 	}
 	
 	//Method to read text from file
@@ -31,6 +37,7 @@ public class InputFile {
 		} catch (IOException err) {
 	        System.err.println("Error :"+ err);
 	    }
+		setCipherLength();
 		cipher.characterFrequency(readData);
 	}
 
