@@ -31,6 +31,21 @@ public class IndexCoinc {
 	}
 	
 	public void calculateShiftIC(LinkedHashMap<String, Double> frequencies, int length) {
+		double den = 0.0;
+		double num = 0.0;
+		double len = (double)(length);
+		double freqMap = 0.0;
+		
+		
+		
+		den = len * (len -1);
+		
+		for(int i = 0; i < 26; i++) {
+			double shifting = (i + 3) modulo 26;
+			freqMap = frequencies.get(i);
+			num += freqMap * normFreq.(i) - 1;
+			
+		}
 		
 	}
 	

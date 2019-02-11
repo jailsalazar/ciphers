@@ -48,6 +48,7 @@ public class FrequencyAnalysis {
 		return FREQ;
 	}
 	
+	
 	public void characterFrequency(String data) {
 		
 		for(int i = 0; i < data.length(); i++) {
