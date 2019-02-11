@@ -30,21 +30,23 @@ public class IndexCoinc {
 		determinePossibleCipher(IC);
 	}
 	
-	public void calculateShiftIC(LinkedHashMap<String, Double> cipherFreq, LinkedHashMap<String, Double> commonFreq, int length) {
+	public void calculateShiftIC(LinkedHashMap<String, Double> frequencies, int length) {
 //		double den = 0.0;
 //		double num = 0.0;
-//		double shifting = 0.0;
 //		double len = (double)(length);
-//		double freq = 0.0;
+//		double freqMap = 0.0;
+//		
+//		
 //		
 //		den = len * (len -1);
 //		
 //		for(int i = 0; i < 26; i++) {
-//			shifting = (i+3)%26;
-//			freq = commonFreq.get(i);
-//			num += freq * freq - 1;
+//			double shifting = (i + 3) modulo 26;
+//			freqMap = frequencies.get(i);
+//			num += freqMap * normFreq.(i) - 1;
+//			
 //		}
-		
+//		
 	}
 	
 	public void determinePossibleCipher(double IC) {
