@@ -47,7 +47,7 @@ public class Shift {
 			shiftKey.put(cipher.get(i), keyString.toLowerCase());
 		}
 		
-		System.out.println("Shifted: " + shift + " " + Arrays.asList(shiftKey)); 
+		//System.out.println("Shifted: " + shift + " " + Arrays.asList(shiftKey)); 
 		
 		return shiftKey;
 		
