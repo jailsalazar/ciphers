@@ -141,7 +141,7 @@ public class FrequencyAnalysis {
 		System.out.println(Arrays.asList(freqMap)); 
 		System.out.println(Arrays.asList(normalFreq));
 		
-		IC.calculateIC(freqMap, data.length());
+		IC.calculateIC(freqMap, data.length(), data);
 	}
 	
 	public LinkedHashMap<String, Double> sortMap(LinkedHashMap<String, Double> unsortedMap) {

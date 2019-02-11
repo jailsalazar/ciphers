@@ -11,7 +11,7 @@ public class IndexCoinc {
 		possibleCipher = "";
 	}
 	
-	public void calculateIC(LinkedHashMap<String, Double> frequencies, int length) {
+	public void calculateIC(LinkedHashMap<String, Double> frequencies, int length, String cipher) {
 		double den = 0.0;
 		double num = 0.0;
 		double len = (double)(length);
@@ -27,7 +27,7 @@ public class IndexCoinc {
 		IC = num / den;
 		System.out.println("IC: " + IC);	
 		
-		determinePossibleCipher(IC);
+		determinePossibleCipher(frequencies, IC, cipher);
 	}
 	
 	public void calculateShiftIC(LinkedHashMap<String, Double> frequencies, int length) {
@@ -49,7 +49,21 @@ public class IndexCoinc {
 //		
 	}
 	
-	public void determinePossibleCipher(double IC) {
+	public void determinePossibleCipher(LinkedHashMap<String, Double> frequencies, double IC, String cipher) {
+		//shift cipher = 0.065
+		// vignere cipher < 0.065
+		//one time pad = 0.038
+		//permutation = 0.065
+		
+		if (IC < 0.06 && IC > 0.07 ) {
+			//recommend shift
+			Shift attemptShift = new Shift();
+			attemptShift.shiftCipher(frequencies, cipher);
+		}
+		
+		
+		
+		
 		
 	}
 }
