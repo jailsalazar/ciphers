@@ -122,6 +122,14 @@ public class FrequencyAnalysis {
 		return FREQTRI;
 	}
 	
+	public void analyzeCipher(String data) {
+		characterFrequency(data);
+		bigramFrequency(data);
+		trigramFrequency(data);
+		
+		IC.calculateIC(freqMap, data.length(), data);
+	}
+	
 	public void characterFrequency(String data) {
 		
 		for(int i = 0; i < data.length(); i++) {
@@ -138,10 +146,10 @@ public class FrequencyAnalysis {
 		
 		freqMap = sortMap(freqMap);
 		
-		System.out.println(Arrays.asList(freqMap)); 
-		System.out.println(Arrays.asList(normalFreq));
+		//System.out.println(Arrays.asList(freqMap)); 
+		//System.out.println(Arrays.asList(normalFreq));
 		
-		IC.calculateIC(freqMap, data.length(), data);
+		//IC.calculateIC(freqMap, data.length());
 	}
 	
 	public LinkedHashMap<String, Double> sortMap(LinkedHashMap<String, Double> unsortedMap) {
