@@ -7,11 +7,15 @@ import decryption.IndexCoinc;
 
 public class FrequencyAnalysis {
 	public LinkedHashMap<String, Double> freqMap;
+	public LinkedHashMap<String, Double> bigramFreqMap;
+	public LinkedHashMap<String, Double> trigramFreqMap;
 	public LinkedHashMap<String, Double> normalFreq = new LinkedHashMap<String, Double>();
 	public IndexCoinc IC;
 	
 	public FrequencyAnalysis() {
 		freqMap = new LinkedHashMap<String, Double>();
+		bigramFreqMap = new LinkedHashMap<String, Double>();
+		trigramFreqMap = new LinkedHashMap<String, Double>();
 		normalFreq = getNormalFrequencies();
 		IC = new IndexCoinc();
 	}
@@ -86,5 +90,43 @@ public class FrequencyAnalysis {
 		 
 		//System.out.println("Reverse Sorted Map   : " + reverseSortedMap);
 		return reverseSortedMap;
+	}
+	
+	public void bigramFrequency(String data) {
+		
+		for(int i = 0; i < data.length()-1; i=i+2) {
+			String tempString = Character.toString(data.charAt(i)) + Character.toString(data.charAt(i+1));
+			Double value = bigramFreqMap.get(tempString);
+			
+			if(value != null) {
+				bigramFreqMap.put(tempString, new Double(value + 1));
+			}
+			else {
+				bigramFreqMap.put(tempString, 1.0);
+			}
+		}
+		
+		bigramFreqMap = sortMap(bigramFreqMap);
+		
+		System.out.println("Bigram: " + Arrays.asList(bigramFreqMap)); 
+	}
+	
+	public void trigramFrequency(String data) {
+		
+		for(int i = 0; i < data.length()-2; i=i+3) {
+			String tempString = Character.toString(data.charAt(i)) + Character.toString(data.charAt(i+1)) + Character.toString(data.charAt(i+2));
+			Double value = trigramFreqMap.get(tempString);
+			
+			if(value != null) {
+				trigramFreqMap.put(tempString, new Double(value + 1));
+			}
+			else {
+				trigramFreqMap.put(tempString, 1.0);
+			}
+		}
+		
+		trigramFreqMap = sortMap(trigramFreqMap);
+		
+		System.out.println("Trigram: " + Arrays.asList(trigramFreqMap)); 
 	}
 }

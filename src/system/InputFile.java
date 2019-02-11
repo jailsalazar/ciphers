@@ -39,6 +39,8 @@ public class InputFile {
 	    }
 		setCipherLength();
 		cipher.characterFrequency(readData);
+		cipher.bigramFrequency(readData);
+		cipher.trigramFrequency(readData);
 	}
 
 }
