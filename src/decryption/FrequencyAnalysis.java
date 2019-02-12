@@ -127,7 +127,15 @@ public class FrequencyAnalysis {
 		bigramFrequency(data);
 		trigramFrequency(data);
 		
-		IC.calculateIC(freqMap, data.length(), data);
+		IC.calculateIC(freqMap, trigramFreqMap, normalFreq, data.length(), data);
+	}
+	
+	public LinkedHashMap<String, Double> getTrigrams(){
+		return trigramFreqMap;
+	}
+	
+	public LinkedHashMap<String, Double> getMonoFreq(String segment){
+		return monoFrequency(segment);
 	}
 	
 	public void characterFrequency(String data) {
@@ -145,6 +153,29 @@ public class FrequencyAnalysis {
 		}
 		
 		freqMap = sortMap(freqMap);
+		
+		//System.out.println(Arrays.asList(freqMap)); 
+		//System.out.println(Arrays.asList(normalFreq));
+		
+		//IC.calculateIC(freqMap, data.length());
+	}
+	
+	public LinkedHashMap<String, Double> monoFrequency(String data) {
+		LinkedHashMap<String, Double> temp = new LinkedHashMap<String, Double>();
+		
+		for(int i = 0; i < data.length(); i++) {
+			char tempChar = data.charAt(i);
+			Double value = temp.get(Character.toString(tempChar));
+			
+			if(value != null) {
+				temp.put(Character.toString(tempChar), new Double(value + 1));
+			}
+			else {
+				temp.put(Character.toString(tempChar), 1.0);
+			}
+		}
+		
+		return sortMap(temp);
 		
 		//System.out.println(Arrays.asList(freqMap)); 
 		//System.out.println(Arrays.asList(normalFreq));

@@ -1,6 +1,8 @@
 package decryption;
 
 import java.util.LinkedHashMap;
+import decryption.Vigenere;
+import decryption.Substitution;
 
 public class IndexCoinc {
 	public double IC;
@@ -11,7 +13,7 @@ public class IndexCoinc {
 		possibleCipher = "";
 	}
 	
-	public void calculateIC(LinkedHashMap<String, Double> frequencies, int length, String cipher) {
+	public void calculateIC(LinkedHashMap<String, Double> frequencies, LinkedHashMap<String, Double> tri, LinkedHashMap<String, Double> normFreq, int length, String cipher) {
 		double den = 0.0;
 		double num = 0.0;
 		double len = (double)(length);
@@ -27,43 +29,31 @@ public class IndexCoinc {
 		IC = num / den;
 		System.out.println("IC: " + IC);	
 		
-		determinePossibleCipher(frequencies, IC, cipher);
+		determinePossibleCipher(frequencies, tri, normFreq, IC, cipher);
 	}
 	
-	public void calculateShiftIC(LinkedHashMap<String, Double> frequencies, int length) {
-//		double den = 0.0;
-//		double num = 0.0;
-//		double len = (double)(length);
-//		double freqMap = 0.0;
-//		
-//		
-//		
-//		den = len * (len -1);
-//		
-//		for(int i = 0; i < 26; i++) {
-//			double shifting = (i + 3) modulo 26;
-//			freqMap = frequencies.get(i);
-//			num += freqMap * normFreq.(i) - 1;
-//			
-//		}
-//		
-	}
-	
-	public void determinePossibleCipher(LinkedHashMap<String, Double> frequencies, double IC, String cipher) {
+	public void determinePossibleCipher(LinkedHashMap<String, Double> frequencies, LinkedHashMap<String, Double> tri, LinkedHashMap<String, Double> normFreq, double IC, String cipher) {
 		//shift cipher = 0.065
 		// vignere cipher < 0.065
 		//one time pad = 0.038
 		//permutation = 0.065
 		
-		if (IC < 0.06 && IC > 0.07 ) {
+		if(IC > 0.65) {
+			Substitution attemptSubstitution = new Substitution();
+			attemptSubstitution.basicSubstitution(frequencies, normFreq);
+		}
+		else if (IC > 0.06 && IC < 0.065 ) {
 			//recommend shift
 			Shift attemptShift = new Shift();
 			attemptShift.shiftCipher(frequencies, cipher);
 		}
 		
-		
-		
-		
-		
+		else if(IC < 0.6) {
+			Vigenere attemptVigenere = new Vigenere();
+			attemptVigenere.calculateKasiski(tri, cipher);
+		}
+		else {
+			System.out.print("The cipher maybe undecryptable");
+		}
 	}
 }

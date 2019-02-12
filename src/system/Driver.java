@@ -2,6 +2,7 @@ package system;
 import decryption.FrequencyAnalysis;
 
 import java.util.LinkedHashMap;
+import decryption.Vigenere;
 
 public class Driver {
 	
@@ -10,9 +11,13 @@ public class Driver {
 		FrequencyAnalysis decryptCipher = new FrequencyAnalysis();
 		//LinkedHashMap<String, String> key;
 		
-		fileToOpen.readFile("./ciphertext/cipher2.txt");
+		fileToOpen.readFile("./ciphertext/cipher3.txt");
 		
 		decryptCipher.analyzeCipher(fileToOpen.readData);
+		
+		Vigenere testing = new Vigenere();
+		LinkedHashMap<String, Double> trigrams = decryptCipher.getTrigrams();
+		testing.calculateKasiski(trigrams, fileToOpen.readData);
 		
 		
 		
